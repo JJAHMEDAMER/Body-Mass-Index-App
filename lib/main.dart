@@ -1,3 +1,5 @@
+import 'package:bmi_calc_app/AppWidgets/AppText.dart';
+import 'package:bmi_calc_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: AppColors.Black,
+        body: AppText(text: "hello App",),
       ),
     );
   }
