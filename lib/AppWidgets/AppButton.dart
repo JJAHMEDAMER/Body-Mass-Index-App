@@ -4,17 +4,18 @@ import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {
   final String buttonText;
+  final void Function() func;
+
   const AppButton({
     super.key,
     required this.buttonText,
+    required this.func,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        null;
-      },
+      onPressed: func,
       style: TextButton.styleFrom(
         padding: const EdgeInsets.only(
           top: 10,
