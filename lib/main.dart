@@ -1,3 +1,4 @@
+import 'package:bmi_calc_app/AppWidgets/AppButton.dart';
 import 'package:bmi_calc_app/AppWidgets/AppText.dart';
 import 'package:bmi_calc_app/AppWidgets/InputText.dart';
 import 'package:bmi_calc_app/AppWidgets/sideStrips.dart';
@@ -8,7 +9,49 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  double bmi_result = 0.0;
+  double height = 0.0;
+  double mass = 0.0;
+  String health = "";
+  TextEditingController textControllerHeight = TextEditingController();
+
+  TextEditingController textControllerMass = TextEditingController();
+
+  void logic() {
+    setState(() {
+      mass = double.parse(textControllerMass.text);
+      height =
+          double.parse(textControllerHeight.text) / 100; // Convert to meter
+
+      bmi_result = mass / (height * height);
+      bmi_result = double.parse(bmi_result.toStringAsFixed(2));
+
+      if (bmi_result < 16) {
+        health = "Severe Thinness";
+      } else if (bmi_result < 17) {
+        health = "Moderate Thinness";
+      } else if (bmi_result < 18.5) {
+        health = "Mild Thinness";
+      } else if (bmi_result < 25) {
+        health = "Normal";
+      } else if (bmi_result < 30) {
+        health = "Overweight";
+      } else if (bmi_result < 35) {
+        health = "Obese Class I";
+      } else if (bmi_result < 40) {
+        health = "Obese Class II";
+      } else if (bmi_result > 40) {
+        health = "Obese Class III";
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,25 +72,29 @@ class MyApp extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Expanded(
-                          child: InputText(
-                        label: "Height",
-                        hintText: "in CM",
-                        size: 26,
-                      )),
+                        child: InputText(
+                          textcontroller: textControllerHeight,
+                          label: "Height",
+                          hintText: "in CM",
+                          size: 26,
+                        ),
+                      ),
                       Expanded(
-                          child: InputText(
-                        label: "Mass",
-                        hintText: "in KGs",
-                        size: 26,
-                      )),
+                        child: InputText(
+                          textcontroller: textControllerMass,
+                          label: "Mass",
+                          hintText: "in KGs",
+                          size: 26,
+                        ),
+                      ),
                     ],
                   ),
-                  AppText(text: "Calculate"),
+                  AppButton(func: logic, buttonText: "Calculate"),
                   AppText(
-                    text: "0",
+                    text: bmi_result.toString(),
                     size: 72,
                   ),
-                  AppText(text: "Normal Weight"),
+                  AppText(text: health),
                 ],
               ),
             ),
