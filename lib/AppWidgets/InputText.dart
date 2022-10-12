@@ -1,3 +1,4 @@
+import 'package:bmi_calc_app/AppWidgets/AppText.dart';
 import 'package:bmi_calc_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,10 @@ class InputText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      // Text Alignment
+      textAlign: TextAlign.center,
+      textAlignVertical: TextAlignVertical.center,
+
       // Curser
       cursorColor: AppColors.White,
 
@@ -29,16 +34,16 @@ class InputText extends StatelessWidget {
       // Label Hint and other
       decoration: InputDecoration(
         // Label
-        labelText: label,
-        labelStyle: TextStyle(
-          color: AppColors.Yellow,
-          fontSize: size,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w600,
+        label: Center(
+          child: AppText(
+            text: label,
+            size: size,
+          ),
         ),
+
         // Hint Text
         hintText: hintText,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: AppColors.Grey,
           fontSize: 12,
           fontFamily: 'Poppins',
@@ -50,7 +55,6 @@ class InputText extends StatelessWidget {
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(50),
         ),
-        // hi
       ),
     );
   }
