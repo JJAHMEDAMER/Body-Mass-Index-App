@@ -6,16 +6,23 @@ class InputText extends StatelessWidget {
   final String label;
   final String hintText;
   final double size;
+  final TextEditingController textcontroller;
 
   InputText({
     required this.label,
     required this.hintText,
+    required this.textcontroller,
     this.size = 16,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return TextField(
+      controller: textcontroller,
+
+      // Enter Button
+      textInputAction: TextInputAction.next,
+
       // Text Alignment
       textAlign: TextAlign.center,
       textAlignVertical: TextAlignVertical.center,
