@@ -98,25 +98,24 @@ class _MyAppState extends State<MyApp> {
                 ],
               ),
             ),
-            Container(
-                child: Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Strips(
-                  borderRadius: BorderRadius.horizontal(
-                    left: Radius.circular(100),
-                  ),
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                ),
-                SizedBox(height: 10),
-                Strips(
-                  borderRadius: BorderRadius.horizontal(
-                    right: Radius.circular(100),
-                  ),
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                ),
+              children: const [
+            Strips(
+              borderRadius: BorderRadius.horizontal(
+                left: Radius.circular(100),
+              ),
+              crossAxisAlignment: CrossAxisAlignment.end,
+            ),
+            SizedBox(height: 10),
+            Strips(
+              borderRadius: BorderRadius.horizontal(
+                right: Radius.circular(100),
+              ),
+              crossAxisAlignment: CrossAxisAlignment.start,
+            ),
               ],
-            )),
+            ),
           ],
         ),
       ),
