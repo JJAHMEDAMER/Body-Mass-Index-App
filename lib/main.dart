@@ -1,4 +1,5 @@
 import 'package:bmi_calc_app/AppWidgets/AppText.dart';
+import 'package:bmi_calc_app/AppWidgets/InputText.dart';
 import 'package:bmi_calc_app/AppWidgets/sideStrips.dart';
 import 'package:bmi_calc_app/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -23,26 +24,36 @@ class MyApp extends StatelessWidget {
                     text: "BMI Calculator",
                     size: 12,
                   ),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      AppText(
-                        text: "Height",
-                      ),
-                      AppText(
-                        text: "Height",
-                      )
+                      Expanded(
+                          child: InputText(
+                        label: "Height",
+                        hintText: "in CM",
+                        size: 26,
+                      )),
+                      Expanded(
+                          child: InputText(
+                        label: "Mass",
+                        hintText: "in KGs",
+                        size: 26,
+                      )),
                     ],
                   ),
                   AppText(text: "Calculate"),
-                  AppText(text: "0"),
+                  AppText(
+                    text: "0",
+                    size: 72,
+                  ),
                   AppText(text: "Normal Weight"),
                 ],
               ),
             ),
             Container(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Strips(
                   borderRadius: BorderRadius.horizontal(
