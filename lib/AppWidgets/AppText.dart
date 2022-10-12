@@ -18,6 +18,8 @@ class AppText extends StatelessWidget {
       style: TextStyle(
         color: color,
         fontSize: size,
+        fontFamily: 'Poppins',
+        fontWeight: FontWeight.w600
       ),
     );
   }

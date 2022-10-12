@@ -18,8 +18,9 @@ class MyApp extends StatelessWidget {
             Container(
               child: Column(
                 children: [
+                  const SizedBox(height: 15),
                   AppText(
-                    text: "hello App",
+                    text: "BMI Calculator",
                     size: 12,
                   ),
                   Row(
